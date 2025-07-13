@@ -6,22 +6,31 @@ Supports custom code and attempt count via command-line flags.
 ## How the Game Works :
 
 Program.Main
-  └── Parses -c and -t from terminal
-  └── new Game(code, attempts)
-        └── new SecretCode(code)
-  └── game.Start()
-        └── Loop for attempts
-              └── Ask for guess
-              └── Validate guess (SecretCode.IsValidGuess)
-              └── Compare to code (count correct/misplaced)
-              └── Give feedback
-              └── End on win or lose
+   - Parses -c and -t from terminal
+       - new Game(code, attempts)
+         -  new SecretCode(code)
+  - game.Start()
+
+     - Loop for attempts
+
+       - Ask for guess
+
+         - Validate guess (SecretCode.IsValidGuess)
+             
+             - Compare to code (count correct/misplaced)
+              
+              -Give feedback
+              
+              -End on win or lose
 
 ## HOW THE CODE WORK :
 ### 2-Program Class:
 The entry point of the game.
-Reads terminal arguments:
+
+-Reads terminal arguments:
+
 -c for custom secret code
+
 -t for number of attempts
 
 Creates a Game object and starts the game.
@@ -31,8 +40,11 @@ Initializes the game with a secret code and max attempts.
 Creates a new SecretCode object using the given code (or random if not provided).
 
 Method : Start() :
-Runs the main gameplay loop.
-For each attempt:
+
+-Runs the main gameplay loop.
+ 
+ -For each attempt:
+ 
  -Prompts the player for input.
 
 Validates the input with SecretCode.IsValidGuess().
@@ -52,12 +64,17 @@ Attempts run out.
 -tores a custom code or generates a random 4-digit code from digits 0–8 with no repeats.
 
 Method: GenerateRandomCode() :
+
 -Randomly creates a 4-digit secret code with no repeated digits from 0–8.
 
 Method: IsValidGuess(string guess) :
-nsures the player's guess:
+
+-nsures the player's guess:
+
  -Is exactly 4 characters
+ 
  -Contains only digits between 0–8
+
  -Has no repeated digits
 
               
